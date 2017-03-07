@@ -33,7 +33,7 @@ cp ./config_vars.yml /etc/xsce/config_vars.yml
 
 # don't let the /home directory be empty
 if [ ! -f /library/www/html/home/index.html ]; then
-   cp /library/www/html/iiab-menu/index.html /library/www/html/home/
+   cp /library/www/html/iiab-menu/samples/content-ready-index.html /library/www/html/home/index.html
 fi
 
 # fetch the openstreetmap up to level 8 --adds 200MB
@@ -42,7 +42,8 @@ tar xzf /tmp/osm8.tar.gz --directory /library/knowledge
 
 # We need to replace kalite 0.16 with 0.17 -- not every time this script is run
 if [ -f /usr/share/kalite/docs/_build ]; then
-   rm -rf /library kalite
+   rm -rf /library/kalite
+   rm -rf /usr/share/kalite
    cd /opt/schoolserver/xsce
    ./runtags kalite
 fi
